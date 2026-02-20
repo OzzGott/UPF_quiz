@@ -120,12 +120,37 @@ button:hover {
     background: #43a047;
 }
 
+#submit-btn {
+    grid-column: 1 / -1;
+    width: 40%;
+    margin: 1rem auto 0;
+}
+
 .game-container h1 {
     font-size: clamp(1.8rem, 5vw, 2rem);
     width: 100%;
     margin-top: 0;
     font-family: 'Poppins', sans-serif;
     font-weight: normal;
+}
+
+.selected {
+    border-color: lightblue;
+    background: #e8f5e9;
+}
+
+.correct {
+    border-color: var(--green);
+    background: #e8f5e9;
+}
+
+.missed {
+    border-color: orange;
+    background: #e8f5e9;
+}
+.wrong {
+    border-color: var(--red);
+    background: #ffebee;
 }
 
 /*Special atts for desktop/tablets*/
@@ -146,7 +171,8 @@ button:hover {
 
     .option {
         flex-direction: column;
-        text-align: center;
+        text-align: left;
+        align-items: flex-start;
         padding: 1rem;
     }
 

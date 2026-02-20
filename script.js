@@ -15,56 +15,56 @@ const startButton = document.getElementById('start-game-btn');
 const questions = [
     {
         text: "Hvilke af nedenstående fødevarer er ultraforarbejdede?",
-        explanation: "De tre bælgfruger, flest danskere har prøvet, er edamamebønner (60 %), kikærter (55 %) og kidneybønner (53 %), mens under 5 % har prøvet ingridærter og gråærter",
+        explanation: "Forklaring?",
         options: [
-            { name: "Komælk", true: false, img: "./images/Edamame_bean.png" },
-            { name: "Rugbrød", true: true, img: "./images/Chickpea.png" },
-            { name: "Havdredrik", true: true, img: "./images/Green_lentil.png" },
-            { name: "Hakket oksekød", true: false, img: "./images/Red_lentil.png"},
-            { name: "Spegepølse", true: true, img: "./images/Kidney_bean.png" },
-            { name: "Æg", true: false, img: "./images/Pea.png" },
-            { name: "Havregryn", true: false, img: "./images/Edamame_bean.png" },
+            { name: "Komælk", true: false},
+            { name: "Rugbrød", true: true },
+            { name: "Havdredrik", true: true },
+            { name: "Hakket oksekød", true: false},
+            { name: "Spegepølse", true: true },
+            { name: "Æg", true: false },
+            { name: "Havregryn", true: false },
         ]
     },
     {
         text: "Hvilke af nedenstående fødevarer er ultraforarbejdede?",
-        explanation: "Fødevarestyrelsen anbefaler, at spise mindre kød, mere fisk og flere bælgfrugter. De anbefaler, at man spiser 100 gram bælgfrugter om dagen. Bælgfrugterne er både en god kilde til protein og andre næringsstoffer og er samtidig blandt de fødevarer, der har det laveste klimaaftryk.",
+        explanation: "Forklaring?",
         options: [
-            { name: "Plantepølse", true: true, img: "./images/27.png" },
-            { name: "Vaniljeskyr", true: true, img: "./images/17.png" },
-            { name: "Cheddar", true: false, img: "./images/4.png" },
-            { name: "Bacon", true: false, img: "./images/15.png"},
-            { name: "Havrefras", true: true, img: "./images/17.png" },
-            { name: "Kyllingebryst", true: false, img: "./images/4.png" },
-            { name: "Beef jerky", true: false, img: "./images/15.png"},
+            { name: "Plantepølse", true: true },
+            { name: "Vaniljeskyr", true: true },
+            { name: "Cheddar", true: false },
+            { name: "Bacon", true: false},
+            { name: "Havrefras", true: true },
+            { name: "Kyllingebryst", true: false },
+            { name: "Beef jerky", true: false},
         ]
     },
     {
         text: "Hvilke af nedenstående fødevarer er ultraforarbejdede?",
-        explanation: "I Region Hovedstaden er det over halvdelen (52 %), der spiser bælgfrugter ugentligt. I Region Midtjylland og Region Syddanmark er det 42 %, i Region Sjælland 37 % og i Region Nordjylland 32 %.",
+        explanation: "Forklaring?",
         options: [
-            { name: "Frysepizza", true: true, img: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Map_DK_Region_Hovedstaden.png" },
-            { name: "Linser på dåse", true: false, img: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Map_DK_Region_Midtjylland.png" },
-            { name: "Kimchi", true: true, img: "https://upload.wikimedia.org/wikipedia/commons/3/38/Map_DK_Region_Syddanmark.png" },
-            { name: "Smør", true: false, img: "https://upload.wikimedia.org/wikipedia/commons/8/83/Map_DK_Region_Nordjylland.png"},
-            { name: "Græsk yoghurt", true: false, img: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Map_DK_Region_Hovedstaden.png" },
-            { name: "Fuldkornstortilla", true: true, img: "https://upload.wikimedia.org/wikipedia/commons/b/ba/Map_DK_Region_Midtjylland.png" },
-            { name: "Kartofler", true: false, img: "https://upload.wikimedia.org/wikipedia/commons/3/38/Map_DK_Region_Syddanmark.png" },
-            { name: "Frosne Jordbær", true: false, img: "https://upload.wikimedia.org/wikipedia/commons/8/83/Map_DK_Region_Nordjylland.png"},
+            { name: "Frysepizza", true: true },
+            { name: "Linser på dåse", true: false },
+            { name: "Kimchi", true: true },
+            { name: "Smør", true: false},
+            { name: "Græsk yoghurt", true: false },
+            { name: "Fuldkornstortilla", true: true },
+            { name: "Kartofler", true: false },
+            { name: "Frosne Jordbær", true: false},
         ]
     },
     {
         text: "Hvilke af nedenstående fødevarer er ultraforarbejdede?",
-        explanation: "Mens 14 % af dem, der træner mindre end fire gange om ugen, har erstattet kød med bælgfrugter inden for den seneste uge, gælder det hele 26 % af de mere fysisk aktive.",
+        explanation: "Forklaring?",
         options: [
-            { name: "Saltede nødder", true: false, img: "./images/up.png" },
-            { name: "Figenstænger", true: true, img: "./images/down.png" },
-            { name: "Drikkeyoghurt", true: true, img: "./images/equal.png" },
-            { name: "Vingummi", true: true, img: "./images/up.png" },
-            { name: "Proteinshake", true: true, img: "./images/down.png" },
-            { name: "Tørret mango", true: false, img: "./images/equal.png" },
-            { name: "Rosiner", true: false, img: "./images/up.png" },
-            { name: "Knækbrød", true: true, img: "./images/up.png" },
+            { name: "Saltede nødder", true: false },
+            { name: "Figenstænger", true: true },
+            { name: "Drikkeyoghurt", true: true },
+            { name: "Vingummi", true: true },
+            { name: "Proteinshake", true: true },
+            { name: "Tørret mango", true: false },
+            { name: "Rosiner", true: false },
+            { name: "Knækbrød", true: true },
         ]
     },
 ];
@@ -93,11 +93,12 @@ function renderQuestion() {
         div.dataset.index = index;
 
         div.innerHTML = `
-            <img src="${option.img}" alt="${option.name}">
-            <div>
-                <strong>${option.name}</strong>
+            <div style="display: flex; align-items: center; gap: 10px; justify-content: flex-start;">
+                <input type="checkbox" class="option-checkbox" data-index="${index}">
+                <div>
+                    <strong>${option.name}</strong>
+                </div>
             </div>
-            <input type="checkbox" class="option-checkbox" data-index="${index}">
         `;
 
         div.addEventListener('click', () => toggleOption(div, option, index));
