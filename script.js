@@ -1,9 +1,9 @@
-let points = 0;
 let currentQuestion = 0;
 let showingExplanation = false;
 let selectedOptions = [];
+let questionScores = [];
+let allSelectedEverything = true; //hehe
 
-const totalQuestionsSpan = document.getElementById('total-questions');
 const questionArea = document.getElementById('question-area');
 const endScreen = document.getElementById('end-screen');
 const startScreen = document.getElementById('start-screen');
@@ -130,18 +130,24 @@ function toggleOption(div, option, index) {
 function submitAnswer() {
     const q = questions[currentQuestion];
 
-    // Score: only award a point if selected options exactly match correct options
-    const correctIndices = q.options
-        .map((opt, i) => opt.true ? i : null)
-        .filter(i => i !== null);
+    if (selectedOptions.length !== q.options.length) {
+        allSelectedEverything = false;
+    }
 
-    const isFullyCorrect =
-        selectedOptions.length === correctIndices.length &&
-        correctIndices.every(i => selectedOptions.includes(i));
+    // Calculate score: +1 for each correct selection, -1 for each wrong/missed
+    let raw = 0;
+    q.options.forEach((option, index) => {
+        const wasSelected = selectedOptions.includes(index);
+        if (option.true && wasSelected) raw++;
+    });
 
-    if (isFullyCorrect) points++;
+    const correctCount = q.options.filter(opt => opt.true).length;
+    const score = correctCount === 0 ? 1 : Math.max(0, raw) / correctCount;
+    questionScores.push(score);
 
-    // Color-code each option
+    const wrongCount = q.options.filter((opt, i) => !opt.true && selectedOptions.includes(i)).length;
+    const wrongPart = wrongCount === 0 ? '' : wrongCount === 1 ? ` Men du valgte ${wrongCount} forkert.` : ` Men du valgte ${wrongCount} forkerte.`;
+
     q.options.forEach((option, index) => {
         const div = questionArea.querySelector(`.option[data-index="${index}"]`);
         const wasSelected = selectedOptions.includes(index);
@@ -162,14 +168,12 @@ function submitAnswer() {
     const explanationDiv = document.createElement('div');
     explanationDiv.className = "explanation";
 
+    const questionPct = Math.round(score * 100);
     const lastQuestion = currentQuestion === questions.length - 1;
     const nextButtonText = lastQuestion ? "Se resultat" : "Næste spørgsmål";
 
     explanationDiv.innerHTML = `
-        <p>${isFullyCorrect
-            ? "<mark style='background-color: #32CD32;'>Korrekt! Godt klaret.</mark>"
-            : "<mark style='background-color: red;'>Ikke helt rigtigt.</mark>"
-        }</p>
+        <p>Du fik <strong>${questionPct}%</strong> på dette spørgsmål. ${wrongPart}</p>
         <p>${q.explanation || ""}</p>
         <button id="next-btn">${nextButtonText}</button>
     `;
@@ -187,16 +191,26 @@ function showEndScreen() {
     questionArea.innerHTML = "";
     endScreen.classList.remove("hidden");
     startScreen.classList.add("hidden");
-    finalScore.textContent = points;
-    totalQuestionsSpan.textContent = questions.length;
+
+    const avgScore = questionScores.reduce((a, b) => a + b, 0) / questionScores.length;
+    const pct = Math.round(avgScore * 100);
+
+    finalScore.textContent = `${pct}%`;
+
+    if (allSelectedEverything) {
+        scoreComment.textContent = "Valgte du bare alle mulighederne hver gang? Den holder vel ikke helt, vel?";
+        return;
+    }
 
     let comment = "";
-    if (points === questions.length) {
-        comment = "Fantastisk! Du kender dine bælgfrugter!";
-    } else if (points >= questions.length / 2) {
-        comment = "Godt klaret! Du har en fin forståelse for bælgfrugter.";
+    if (pct === 100) {
+        comment = "Fantastisk! Du kender dine ultraforarbejdede fødevarer perfekt!";
+    } else if (pct >= 75) {
+        comment = "Godt klaret! Du har en god forståelse for ultraforarbejdede fødevarer.";
+    } else if (pct >= 50) {
+        comment = "Ikke dårligt! Der er dog stadig noget at lære.";
     } else {
-        comment = "Øv, du kan prøve igen og lære mere om bælgfrugter.";
+        comment = "Øv, du kan prøve igen og lære mere om ultraforarbejdede fødevarer.";
     }
     scoreComment.textContent = comment;
 }
@@ -208,14 +222,16 @@ function showStartScreen() {
 }
 
 restartBtn.addEventListener('click', () => {
-    points = 0;
     currentQuestion = 0;
+    questionScores = [];
+    allSelectedEverything = true;
     renderQuestion();
 });
 
 startButton.addEventListener('click', () => {
-    points = 0;
     currentQuestion = 0;
+    questionScores = [];
+    allSelectedEverything = true;
     renderQuestion();
 });
 
