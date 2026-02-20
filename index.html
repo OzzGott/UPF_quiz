@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BFP QUIZ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="game-container">
+    <h1>Bælgbarometerquizzen</h1>
+    <img src="./images/partnership_logo.png" alt="farm" style="width: 80%; margin: auto; display: block;">
+    <div id="game">
+        <div id="question-area"></div>
+        <div id="end-screen" class="hidden">
+            <p>Du fik <strong><span id="final-score"></span>/<span id="total-questions"></span></strong> rigtige</p>
+            <p><span id="score-comment"></span></p>
+            <p>Dyk ned i <a href = "https://google.com">Bælgbarometeret her</a> og find alle tal om danskernes holdning og forbrug af bælgfrugter.</p>
+            <button id="restart-btn">Tilbage</button>
+        </div>
+        <div id="start-screen">
+            <h2>Velkommen til <strong>bælgbarometerets quiz</strong></h2>
+            <p>Vi har taget temperaturen på danskernes bælgfrugtsvaner.</p>
+            <p>Kan du gætte, hvad de har valgt?</p>
+            <button id="start-game-btn" type="button">Start quizzen!</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

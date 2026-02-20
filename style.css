@@ -1,0 +1,165 @@
+/* style.css */
+:root {
+    --green: #4CAF50;
+    --red: #E53935;
+    --bg: #f8f8f8;
+}
+
+@font-face {
+  font-family: 'Bloc';
+  src: url('./fonts/bloc.otf') format('opentype');
+}
+/* Added box-sizing universally to prevent padding from expanding widths */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 1rem;
+}
+
+.game-container {
+    background: white;
+    max-width: 600px;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+#status-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+#question-area {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 1rem;
+}
+
+#question-area h2 {
+    grid-column: 1 / -1;
+    font-size: 1.25rem;
+}
+
+.option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 0.75rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    text-align: left;
+}
+
+/*If last question is even in the list (so odd from 1) then */
+#question-area .option:nth-child(even):last-child {
+    grid-column: 1 / -1;
+}
+
+.option:hover {
+    background: #f0f0f0;
+}
+
+.option img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.option.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/*Explananation spans all columns with grid-column att.*/
+.explanation {
+    margin-top: 1rem;
+    text-align: center;
+    grid-column: 1 / -1;
+    width: 100%;
+}
+
+#end-screen, #start-screen {
+    text-align: center;
+}
+
+/*shouldnt be important but hey its not hurting and gemini wrote it in so why the helly not */
+.hidden {
+    display: none !important;
+}
+
+button {
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem; /* Made buttons slightly larger for fat fingers */ /*okay keeping that gemini comment because what is that bro*/
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background: #43a047;
+}
+
+.game-container h1 {
+    font-size: clamp(1.8rem, 5vw, 2rem);
+    width: 100%;
+    margin-top: 0;
+    font-family: 'Bloc', sans-serif;
+    font-weight: normal;
+}
+
+/*Special atts for desktop/tablets*/
+@media (min-width: 700px) {
+    .game-container {
+        padding: 2rem;
+    }
+    
+    .game-container h1 {
+        font-size: clamp(1.2rem, 5vw, 2rem);
+        width: 100%;
+        margin-top: 0;
+    }
+
+    #question-area {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .option {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .option img {
+        width: 80px;
+        height: 80px;
+    }
+
+    button {
+        width: auto;
+    }
+}
